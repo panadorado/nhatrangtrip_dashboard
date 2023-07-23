@@ -1,0 +1,59 @@
+<p class="right__desc">Danh sách người dùng </p>
+<div class="right__table">
+    <div class="right__tableWrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th style="text-align: center;">Hình ảnh</th>
+                    <th style="text-align:left;">Tên</th>
+                    <th style="text-align:left;">Account</th>
+                    <th style="text-align:left;">Email</th>
+                    <th>Quyền</th>
+                    <th>Kích hoạt</th>
+                    <th>Tùy chỉnh</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                {{#each user}}
+                <tr>
+                    <td data-label="STT">{{sum @index 1}}</td>
+                    <td data-label="Hình ảnh" style="text-align: center;">
+                        <img style="width: 30px;height: 30px; border-radius: 100%; object-fit: cover;" src={{this.avatar}} alt={{this.name}}/>
+                    </td>
+                    <td data-label="Tên" style="text-align:left;">{{this.name}}</td>
+                    <td data-label="Account" style="text-align:left;">{{this.account}}</td>
+                    <td data-label="Email" style="text-align:left;">{{this.email}}</td>
+                    <td data-label="Quyền">{{roles this.role}}</td>
+                    <td data-label="Kích hoạt" class={{color this.isActivedEmail}}>{{ this.isActivedEmail }}</td>
+                    <td data-label="Xoá" class="right__iconTable">
+                        <a href=""><img src="/assets/icon-pencil.svg" alt="" style="background-color:transparent;"></a>
+                        <a href=""><img src="/assets/icon-trash.svg" alt="" style="background-color:transparent;"></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <div class="pagination__ctrol">
+            <div class="selectNumber" >
+                <select name="gopage" class="select-items">
+                    {{#each arrNum}}
+                        <option value="{{sum @index 1}}">{{sum @index 1}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button id="nextNumber" class="goNumber">Đến trang</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //your code here
+        var button = $("#nextNumber");
+        var select = $("select[name=gopage]")
+        button.on("click", () => $(location).attr('href', select.val()==1?'/user':'/user?p='+select.val()));
+    });
+</script>

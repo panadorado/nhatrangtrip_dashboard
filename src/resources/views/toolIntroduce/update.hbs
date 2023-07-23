@@ -1,0 +1,66 @@
+<p class="right__desc">Cập Nhật</p>
+<div class="right__formWrapper">
+    <form action="/introduce/update/{{introduce._id}}?_method=PUT" method="POST">
+        {{#if error}} 
+			<span class="update-error">{{error.statusText}} - {{error.message}}</span>
+        {{/if}}
+        <input type="hidden" name="_id" value="{{introduce._id}}">
+        <input type="hidden" name="category" value="{{introduce.category}}">
+        <input type="hidden" name="user_id" value="{{introduce.user_id}}">
+        <div class="right__inputWrapper">
+            <label for="title">Tiêu đề</label>
+            <input type="text" placeholder="Tiêu đề..." name="title" value="{{introduce.title}}" disabled>
+            <label for="title">Địa chỉ</label>
+            <input type="text" placeholder="Địa chỉ..." name="address" value="{{introduce.address}}">
+            <label for="title">Url/Image ( Hình Ảnh )</label>
+            <input type="text" placeholder="URL Image..." name="image" value="{{introduce.image}}">
+        </div>
+        <div class="right__MoreInfomation">
+            <label for="coordinates_positions">Thông tin thêm</label>
+            <div>
+                <input type="number" step="any" placeholder="Latitude (Vĩ độ)..." name="latitude" value="{{introduce.latitude}}">
+                <input type="number" step="any" placeholder="Longitude (Kinh độ)..." name="longitude" value="{{introduce.longitude}}">
+                <input type="text" placeholder="Thời gian hoạt động..." name="timeWork" value="{{introduce.timeWork}}">
+                <input type="text" placeholder="Tác giả..." name="author" value="{{introduce.author}}">
+                <input type="number" placeholder="Từ giá trị ..." name="priceBuyFrom" value="{{introduce.priceBuyFrom}}">
+                <input type="number" placeholder="Đến giá trị ..." name="priceBuyTo" value="{{introduce.priceBuyTo}}">
+            </div>
+        </div>
+        <div class="right__Utilities">
+            <label for="Utilities">Tiện ích</label>
+            <div id="checkboxes">
+                <input type="text" name="wifi" value="{{checked introduce.utilities 'wifi'}}"><label for="wifi">Có wifi (phát sóng)</label>
+                <input type="text" name="ship" value="{{checked introduce.utilities 'ship'}}"><label for="delivery">Có giao hàng</label>
+                <input type="text" name="fans" value="{{checked introduce.utilities 'fans'}}"><label for="airConditioner">Có điều hòa (làm mát)</label>
+                <input type="text" name="fparking" value="{{checked introduce.utilities 'fparking'}}"><label for="parking">Có bãi giữ xe</label>
+                <input type="text" name="groups" value="{{checked introduce.utilities 'groups'}}"><label for="groups">Phù hợp với nhóm</label>
+                <input type="text" name="enableOther" value="{{checked introduce.enableOther}}"><label for="enableOther">Tính năng đặt hàng (dev)</label>
+            </div>
+            <label for="hastag">Gắn thẻ tags</label>
+            <div>
+                <input type="text" id="exist-values" class="tagged form-control" data-removeBtn="true" name="hashtag" value="{{tags introduce.tags}}" placeholder="Hashtag/nhãn...">
+            </div>
+        </div>
+        <div class="right__inputWrapper">
+            <label for="desc">Mô tả</label>
+            <div class="editor-wrapper">
+                <div id="editor-container"></div>
+            </div>
+        </div>
+        <br>
+        <div class="right__inputWrapper">
+            <label for="desc">Render Markdown</label>
+            <div class="editor-wrapper">
+                <input type="hidden" name= "description">
+                <div id="markdown">{{introduce.description}}</div>
+            </div>
+        </div>
+        <br>
+        <div class="buttonContainer">
+            <span><a class="btn btn-done" href="/introduce">Trở về</a></span>
+            <span><div class="btn btn-hidden"></div></span>
+            <span><button class="btn btn-submit" type="submit">Cập nhật</button></span>
+        </div>
+    </form>
+</div>
+{{>pushScript}}

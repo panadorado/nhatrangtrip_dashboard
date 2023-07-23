@@ -1,0 +1,70 @@
+<p class="right__desc">Bộ sưu tập của tôi: {{total}} kết quả</p>
+<div class="right__cardCollection">
+    <div class="container">
+        <div class="imgs">
+            <div id="modal" class="modal">
+                <div class="modal-container">
+                    <img id="current" src="" alt="">
+                </div>
+            </div>
+            {{#each collection}}
+            <div class="img-container">
+                <img src="{{this.secure_url}}" alt="{{this.public_id}}">
+                <div class="photo-overlay">
+                <h1>
+                    FileName: {{this.public_id}} <br>
+                    SizeImage: {{this.width}} x {{this.height}} <br>
+                    Created: {{datetime this.createdAt}} <br>
+                    Updated: {{datetime this.updatedAt}}
+                </h1>
+                </div>
+            </div> 
+            {{/each}}
+        </div>
+    </div>
+    <div class="pagination">
+        <div class="pagination__ctrol">
+            <div class="selectNumber" >
+                <select name="gopage" class="select-items">
+                    {{#each arrNum}}
+                        <option value="{{sum @index 1}}">{{sum @index 1}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button id="nextNumber" class="goNumber">Đến trang</button>
+        </div>
+    </div>
+</div>
+
+
+ 
+<script>
+    const current = document.querySelector('#current');
+    let enlargeMessages = document.querySelectorAll('.photo-overlay h1');
+    const modal = document.getElementById('modal');
+    const overlay = document.querySelectorAll('.photo-overlay');
+    const modalContainer = document.querySelector('.modal-container');
+
+    for (let i =0; i < enlargeMessages.length; i++){
+        enlargeMessages[i].addEventListener('click', imgClick);
+    }
+
+    window.addEventListener('click', clickOutside);
+
+    function imgClick(e){
+        modal.style.display = 'block';
+        current.src = e.target.parentNode.previousElementSibling.src;
+    }
+
+    function clickOutside(e){
+        if(e.target == modal || e.target == modalContainer){
+        modal.style.display = 'none';}
+    }
+
+    $(document).ready(function () {
+        //your code here
+        var button = $("#nextNumber");
+        var select = $("select[name=gopage]")
+        button.on("click", () => $(location).attr('href', select.val()==1?'/collection':'/collection?p='+select.val()));
+    });
+</script>

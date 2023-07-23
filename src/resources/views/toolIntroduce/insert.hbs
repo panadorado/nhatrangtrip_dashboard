@@ -1,0 +1,61 @@
+<p class="right__desc">Tạo bài mới</p>
+<div class="right__formWrapper">
+    <form action="/introduce/create" method="post">
+        <input type="hidden" name="category" value="TYPE_FOOD_DRINK">
+        <div class="right__inputWrapper">
+            <label for="title">Tiêu đề</label>
+            <input type="text" placeholder="Tiêu đề..." name="title">
+            <label for="title">Địa chỉ</label>
+            <input type="text" placeholder="Địa chỉ..." name="address">
+            <label for="title">Url/Image ( Hình Ảnh )</label>
+            <input type="text" placeholder="URL Image..." name="image">
+        </div>
+        <div class="right__MoreInfomation">
+            <label for="coordinates_positions">Thông tin thêm</label>
+            <div>
+                <input type="number" step="any" placeholder="Latitude (Vĩ độ)..." name="latitude">
+                <input type="number" step="any" placeholder="Longitude (Kinh độ)..." name="longitude">
+                <input type="text" placeholder="Thời gian hoạt động..." name="timeWork">
+                <input type="text" placeholder="Tác giả..." name="author">
+                <input type="number" placeholder="Từ giá trị ..." name="priceBuyFrom">
+                <input type="number" placeholder="Đến giá trị ..." name="priceBuyTo">
+            </div>
+        </div>
+        <div class="right__Utilities">
+            <label for="Utilities">Tiện ích</label>
+            <div>
+                <input type="checkbox" name="wifi"><label for="wifi">Có wifi (phát sóng)</label>
+                <input type="checkbox" name="ship"><label for="delivery">Có giao hàng</label>
+                <input type="checkbox" name="fans"><label for="airConditioner">Có điều hòa (làm mát)</label>
+                <input type="checkbox" name="fparking"><label for="parking">Có bãi giữ xe</label>
+                <input type="checkbox" name="groups"><label for="groups">Phù hợp với nhóm</label>
+                <input type="checkbox" name="enableOther"><label for="enableOther">Tính năng đặt hàng (dev)</label>
+            </div>
+            <label for="hastag">Gắn thẻ tags</label>
+            <div>
+                <input type="text" id="exist-values" class="tagged form-control" data-removeBtn="true" name="hashtag" placeholder="Hashtag/nhãn...">
+            </div>
+        </div>
+        <div class="right__inputWrapper">
+            <label for="desc">Mô tả</label>
+            <div class="editor-wrapper">
+                <div id="editor-container">
+            </div>
+        </div>
+        <br>
+        <div class="right__inputWrapper">
+            <label for="desc">Render Markdown</label>
+            <div class="editor-wrapper">
+                <input type="hidden" name= "description">
+                <div id="markdown"></div>
+            </div>
+        </div>
+        <br>
+        <div class="buttonContainer">
+            <span><a class="btn btn-done" href="/introduce">Trở về</a></span>
+            <span><div class="btn btn-hidden"></div></span>
+            <span><button class="btn btn-submit" type="submit">Tạo bài đăng mới</button></span>
+        </div>
+    </form>
+</div>
+{{>pushScript}}

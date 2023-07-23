@@ -1,0 +1,37 @@
+<p class="right__desc">Danh sách Slide </p>
+<div class="right__table">
+    <div class="right__tableWrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th style="text-align: center;">Ảnh</th>
+                    <th>Loại Banner</th>
+                    <th style="text-align: left;">Đăng bởi</th>
+                    <th>Ngày đăng</th>
+                    <th>Ngày Cập nhật</th>
+                    <th>Tùy chỉnh</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                {{#each banner}}
+                <tr>
+                    <td data-label="STT">{{sum @index 1}}</td>
+                    <td data-label="Ảnh" style="text-align: center;">
+                        <img style="width: 100%; height: 2em; border-radius: 5px; object-fit: cover;" src={{this.bannerImage}} alt={{this.title}}/>
+                    </td>
+                    <td data-label="Loại Banner">{{this.bannerType}}</td>
+                    <td data-label="Tạo bởi" style="text-align: left;">{{this.user_id.name}}</td>
+                    <td data-label="Ngày đăng">{{datetime this.createdAt}}</td>
+                    <td data-label="Ngày Cập nhật">{{datetime this.updatedAt}}</td>
+                    <td data-label="Tùy chỉnh" class="right__iconTable">
+                        <a href=""><img src="/assets/icon-pencil.svg" alt="" style="background-color:transparent;"></a>
+                        <a href=""><img src="/assets/icon-trash.svg" alt="" style="background-color:transparent;"></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

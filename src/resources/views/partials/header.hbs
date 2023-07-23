@@ -1,0 +1,63 @@
+<div class="left__logo"><small>NhaTrangTrip</small></div>
+<div class="left__profile">
+    {{#if author}}
+        <div class="left__image"><img class="avatar" src={{ author.avatar }} alt=""></div>
+        <p class="left__name", style="color:#6b71b7;">@{{ author.account }}</p>
+        <p class="left__name", style="color:#79af80; font-size: 20px;">{{ author.name }}</p>
+    {{else}}
+        <div class="left__image"><img src="/assets/profile.jpg" alt=""></div>
+        <p class="left__name">Non User</p>
+    {{/if}}
+</div>
+<ul class="left__menu">
+    <li class="left__menuItem">
+        <a href="/dashboard" class="left__title"><img src="/assets/icon-dashboard.svg" alt="">Dashboard</a>
+    </li>
+    <li class="left__menuItem">
+        <a href="/collection" class="left__title"><img src="/assets/icon-book.svg" alt="">Bộ sưu tập</a>
+    </li>
+    <li class="left__menuItem">
+        <div class="left__title"><img src="/assets/icon-tag.svg" alt="">Introduce<img class="left__iconDown" src="/assets/arrow-down.svg" alt=""></div>
+        <div class="left__text">
+            <a class="left__link" href="/introduce"><img src="/assets/icon-book.svg" alt="">Danh sách Introduce</a>
+            <a class="left__link" href="/introduce/create"><img src="/assets/icon-pencil.svg" alt="">Tạo Introduce</a>
+            <a class="left__link" href="#"><img src="/assets/icon-trash.svg" alt="">DS. Xóa tạm Introduce</a>
+        </div>
+    </li>
+    <li class="left__menuItem">
+        <div class="left__title"><img src="/assets/icon-tag.svg" alt="">Check-in<img class="left__iconDown" src="/assets/arrow-down.svg" alt=""></div>
+        <div class="left__text">
+            <a class="left__link" href="/checkin"><img src="/assets/icon-book.svg" alt="">Danh sách Check-in</a>
+            <a class="left__link" href="/checkin/create"><img src="/assets/icon-pencil.svg" alt="">Tạo Check-in</a>
+            <a class="left__link" href="#"><img src="/assets/icon-trash.svg" alt="">DS. Xóa tạm Introduce</a>
+        </div>
+    </li>
+    <li class="left__menuItem">
+        <div class="left__title"><img src="/assets/icon-tag.svg" alt="">Banner<img class="left__iconDown" src="/assets/arrow-down.svg" alt=""></div>
+        <div class="left__text">
+            <a class="left__link" href="/banner"><img src="/assets/icon-book.svg" alt="">Danh sách Banner</a>
+            <a class="left__link" href="#"><img src="/assets/icon-pencil.svg" alt="">Tạo Banner</a>
+            <a class="left__link" href="#"><img src="/assets/icon-trash.svg" alt="">DS. Xóa tạm Banner</a>
+        </div>
+    </li>
+    <li class="left__menuItem">
+        <div class="left__title"><img src="/assets/icon-tag.svg" alt="">Event<img class="left__iconDown" src="/assets/arrow-down.svg" alt=""></div>
+        <div class="left__text">
+            <a class="left__link" href="/event"><img src="/assets/icon-book.svg" alt="">Danh sách Event</a>
+            <a class="left__link" href="#"><img src="/assets/icon-pencil.svg" alt="">Tạo Event</a>
+        </div>
+    </li>
+    <li class="left__menuItem">
+        <div class="left__title"><img src="/assets/icon-users.svg" alt="">Vai trò<img class="left__iconDown" src="/assets/arrow-down.svg" alt=""></div>
+        <div class="left__text">
+            <a class="left__link" href="/user"><img src="/assets/icon-user.svg" alt="">Users</a>
+            <a class="left__link" href="#"><img src="/assets/icon-user.svg" alt="">Admins</a>
+            <a class="left__link" href="#"><img src="/assets/icon-user.svg" alt="">Manager</a>
+            <a class="left__link" href="#"><img src="/assets/icon-user.svg" alt="">Mod</a>
+            <a class="left__link" href="#"><img src="/assets/icon-trash.svg" alt="">DS. Xóa tạm</a>
+        </div>
+    </li>
+    <li class="left__menuItem">
+        <a href="/dashboard/logout" class="left__title"><img src="/assets/icon-logout.svg" alt="">Đăng Xuất</a>
+    </li>
+</ul>

@@ -1,0 +1,102 @@
+<p class="right__desc">Danh sách các địa điểm du lịch và giải trí: {{total}} kết quả</p>
+<div class="right__table">
+    <div class="right__tableWrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th style="text-align: center;">Ảnh</th>
+                    <th style="text-align: left;">Tiêu đề</th>
+                    <th style="text-align: left;">Địa chỉ</th>
+                    <th style="text-align: left;">Tác giả</th>
+                    <th style="text-align: left;">Đăng bởi</th>
+                    <th>Ngày đăng</th>
+                    <th>Ngày Cập nhật</th>
+                    <th>Tùy chỉnh</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                {{#each checkin}}
+                <tr>
+                    <td data-label="STT">{{sum @index 1}}</td>
+                    <td data-label="Ảnh" style="text-align: center;">
+                        <img style="width: 100%; height: 2em; border-radius: 5px; object-fit: cover;" src={{this.image}} alt={{this.title}}/>
+                    </td>
+                    <td data-label="Tiêu đề" style="text-align: left;">{{this.title}}</td>
+                    <td data-label="Địa chỉ" style="text-align: left;">{{this.address}}</td>
+                    <td data-label="Tác giả" style="text-align: left;">{{this.author}}</td>
+                    <td data-label="Tạo bởi" style="text-align: left;">{{this.user_id.name}}</td>
+                    <td data-label="Ngày đăng">{{datetime this.createdAt}}</td>
+                    <td data-label="Ngày Cập nhật">{{datetime this.updatedAt}}</td>
+                    <td data-label="Tùy chỉnh" class="right__iconTable">
+                        <a href="#edit">
+                            <img src="/assets/icon-pencil.svg" alt="" style="background-color:transparent;">
+                            <div data-ml-modal id="edit">
+                                <a href="#!" class="modal-overlay"></a>
+                                <div class="modal-dialog modal-dialog-lg">
+                                    <a href="#!" class="modal-close">&times;</a>
+                                    <h3>Chỉnh sửa: {{this.title}}</h3>
+                                    <div class="modal-content">
+                                        <div class="content-Container">
+                                            <h3>Bạn có chắc rằng bạn muốn chỉnh sửa thông tin của: <strong>{{this.title}}</strong></h3>
+                                            <p class="content-Desc">
+                                                Mã ID: {{ this._id }} <br>
+                                                Địa chỉ: {{ this.address }} <br>
+                                                Đăng bởi: {{ this.user_id.name }}
+                                            </p>
+                                        </div>
+                                        <div class="center">
+                                            <a href="#!" class="btn btn-default btn-done">Đóng</a>
+                                            <a href="{{hrefLink '/checkin/update/' this.slug }}" class="btn btn-default btn-success">Chỉnh sửa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#delete">
+                            <img src="/assets/icon-trash.svg" alt="" style="background-color:transparent;">
+                            <div data-ml-modal id="delete">
+                                <a href="#!" class="modal-overlay"></a>
+                                <div class="modal-dialog modal-dialog-lg">
+                                    <a href="#!" class="modal-close">&times;</a>
+                                    <h3>CSS Modal 2</h3>
+                                    <div class="modal-content">
+                                        <div class="content-Container">
+                                            1
+                                        </div>
+                                        <div class="center">
+                                            <a href="#!" class="btn btn-default btn-done">Đóng</a>
+                                            <a href="#!" class="btn btn-default btn-err">Xóa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <div class="pagination__ctrol">
+            <div class="selectNumber" >
+                <select name="gopage" class="select-items">
+                    {{#each arrNum}}
+                        <option value="{{sum @index 1}}">{{sum @index 1}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button id="nextNumber" class="goNumber">Đến trang</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //your code here
+        var button = $("#nextNumber");
+        var select = $("select[name=gopage]")
+        button.on("click", () => $(location).attr('href', select.val()==1?'/checkin':'/checkin?p='+select.val()));
+    });
+</script>

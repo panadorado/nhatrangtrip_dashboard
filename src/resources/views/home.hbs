@@ -1,0 +1,26 @@
+<img class="wallpaper" src="/images/nhatrang1.jpg" alt="">
+<div class="mainContainer">
+    <button class="mainContainer__BubblyButton">Đăng Nhập</button>
+</div>
+<script>
+    var animateButton = function(e) {
+
+        e.preventDefault;
+        //reset animation
+        e.target.classList.remove('animate');
+        
+        e.target.classList.add('animate');
+        setTimeout(function(){
+            e.target.classList.remove('animate');
+            setTimeout(function() {
+                window.location="/login";
+            }, 1000)
+        },700);
+    };
+
+    var bubblyButtons = document.getElementsByClassName("mainContainer__BubblyButton");
+
+    for (var i = 0; i < bubblyButtons.length; i++) {
+        bubblyButtons[i].addEventListener('click', animateButton, false);
+    }
+</script>

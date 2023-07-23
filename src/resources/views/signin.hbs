@@ -1,0 +1,85 @@
+<img class="wallpaper" src="/images/nhatrang1.jpg" alt="">
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form method="POST" action="/login">
+			<h1>Đăng Nhập</h1>
+			<div class="logo">
+				<img src="/assets/profile.jpg" alt="">
+			</div>
+			{{#if error}} 
+				<span class="login-error">{{error.statusText}} - {{error.message}}</span>
+			{{else}}
+				<span class="login-none"></span>
+			{{/if}}
+			<input type="email" name="email" placeholder="Email" />
+			<input type="password" name="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<input class="button" type="submit" value="Đăng Nhập">
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-right">	
+				<div class="Mainstage">Chào mừng đến với</div>
+				<div class="stage">
+					<div class="wrapper">
+						<div class="slash"></div>
+						<div class="sides">
+							<div class="side"></div>
+							<div class="side"></div>
+							<div class="side"></div>
+							<div class="side"></div>
+						</div>
+						<div class="text">
+							<div class="text--backing">NhaTrangTrip</div>
+							<div class="text--left">
+							<div class="inner">NhaTrangTrip</div>
+						</div>
+						<div class="text--right">
+							<div class="inner">NhaTrangTrip</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var curry = function curry(f) {
+	return function () {
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {if (window.CP.shouldStopExecution(1)){break;}
+		args[_key] = arguments[_key];
+		}
+	window.CP.exitedLoop(1);
+
+
+		return args.length >= f.length ? f.apply(undefined, args) : curry(f.bind.apply(f, [f].concat(args)));
+	};
+	};
+
+	var compose = function compose(f, g) {
+	return function (x) {
+		return f(g(x));
+	};
+	};
+	var composeN = function composeN() {
+	for (var _len2 = arguments.length, fns = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {if (window.CP.shouldStopExecution(2)){break;}
+		fns[_key2] = arguments[_key2];
+	}
+	window.CP.exitedLoop(2);
+
+
+	return function () {
+		for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {if (window.CP.shouldStopExecution(3)){break;}
+		args[_key3] = arguments[_key3];
+		}
+	window.CP.exitedLoop(3);
+
+
+		return fns.reverse().reduce(function (x, f) {
+		return f.apply(f, [].concat(x));
+		}, args);
+	};
+	};
+</script>

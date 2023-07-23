@@ -1,0 +1,78 @@
+<div class="right__cards">
+    {{#each data}}
+    <a class="right__card" href={{this.url}}>
+        <div class="right__cardTitle">{{this.name}}</div>
+        <div class="right__cardNumber">{{this.view}}</div>
+        <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+    </a>
+    {{/each}}
+</div>
+<div class="right__table">
+    <p class="right__tableTitle">Những bài đăng mới</p>
+    <div class="right__tableWrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ảnh</th>
+                    <th style="text-align: left;">Tiêu đề</th>
+                    <th style="text-align: left;">Tác giả</th>
+                    <th style="text-align: left;">Đăng bởi</th>
+                    <th>Ngày tạo</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                {{#each newIntroduce}}
+                <tr>
+                    <td data-label="STT">{{sum @index 1}}</td>
+                    <td data-label="Hình ảnh" style="text-align: center;">
+                        <img style="width: 100%; height: 2em; border-radius: 5px; object-fit: cover;" src={{this.image}} alt={{this.title}}/>
+                    </td>
+                    <td data-label="Tiêu đề" style="text-align: left;">{{this.title}}</td>
+                    <td data-label="Tác giả" style="text-align: left;">{{this.author}}</td>
+                    <td data-label="Đăng bởi" style="text-align: left;">{{this.user_id.name}}</td>
+                    <td data-label="Ngày tạo">{{datetime this.createdAt}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <a href="/introduce" class="right__tableMore"><p>Xem danh sách Introduce</p> <img src="assets/arrow-right-black.svg" alt=""></a>
+    <div class="right__table">
+    <p class="right__tableTitle">Những người dùng mới</p>
+    <div class="right__tableWrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Avatar</th>
+                    <th style="text-align: left;">Tài khoản</th>
+                    <th style="text-align: left;">{{this.email}}</th>
+                    <th style="text-align: left;">Xác nhận Email</th>
+                    <th style="text-align: left;">Trạng thái</th>
+                    <th>Ngày tạo</th>
+                    <th>Ngày Cập nhật</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                {{#each newUserRegister}}
+                <tr>
+                    <td data-label="STT">{{sum @index 1}}</td>
+                    <td data-label="Avatar" style="text-align: center;">
+                        <img style="width: 35px; height: 35px; border-radius: 50%;" src={{avatar this.avatar}} alt="">
+                    </td>
+                    <td data-label="Tài khoản" style="text-align: left;">{{this.account}}</td>
+                    <td data-label="email" style="text-align: left;">{{this.email}}</td>
+                    <td data-label="Xác nhận Email" style="text-align: left;" class={{status this.isActivedEmail 0}}>{{status this.isActivedEmail 0}}</td>
+                    <td data-label="Trạng thái" style="text-align: left;">{{status this.deleted 2}}</td>
+                    <td data-label="Ngày tạo">{{datetime this.createdAt}}</td>
+                    <td data-label="Ngày Cập nhật">{{datetime this.updatedAt}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <a href="/user" class="right__tableMore"><p>Xem danh sách User</p> <img src="assets/arrow-right-black.svg" alt=""></a>
+</div>
